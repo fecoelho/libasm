@@ -26,7 +26,7 @@ static void	test(char *src)
 	bzero(dst, 5);
 	printf("dst value = \"%s\"\n", dst);
 	printf("dst addr  = %p\n", dst);
-	printf("strcpy    = \"%s\"\n", ft_strcpy(dst, src));
+	printf("ft_strcpy    = \"%s\"\n", ft_strcpy(dst, src));
 	printf("return    = %p\n\n", dst);
 	bzero(dst, 5);
 	printf("----------------------------\n");
@@ -38,5 +38,4 @@ void		test_ft_strcpy(void)
 	test("Hello World");
 	test("");
 	test("a very very very very very very very very very very long string");
-	test("abcdef\0---34567");
 }

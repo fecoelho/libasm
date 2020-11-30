@@ -12,7 +12,7 @@
 
 NAME		=	libasm.a
 
-SRC_DIR		=	./src
+SRC_DIR		=	./srcs
 SRC			=	$(SRC_DIR)/ft_strlen.s \
 				$(SRC_DIR)/ft_strcpy.s \
 				$(SRC_DIR)/ft_strcmp.s \
@@ -64,7 +64,7 @@ clean:
 	$(RM) -r $(OBJ_DIR)
 
 fclean: clean
-	$(RM) $(NAME) test testbonus
+	$(RM) $(NAME) test
 
 re: fclean all
 

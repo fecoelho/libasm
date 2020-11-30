@@ -43,4 +43,6 @@ void		test_ft_strdup(void)
 	printf("\n\n\e[1;1m~~~~~~  FT_STRDUP  ~~~~~~\e[0m\n\n");
 	test("42 Sao Paulo - LIBASM");
 	test("testing ft_strdup");
+	test("");
+	test("a very very very very very very very very very very long string");
 }

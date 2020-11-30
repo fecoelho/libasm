@@ -25,9 +25,9 @@ static void	test(char *s1, char *s2)
 void		test_ft_strcmp(void)
 {
 	printf("\n\n\e[1;1m~~~~~~  FT_STRCMP  ~~~~~~\e[0m\n\n");
-	test("Hello World", "");
-	test("", "Hello World");
 	test("", "");
+	test("", "Hello World");
+	test("Hello World", "");
 	test("test\ting", "test\ving");
 	test("1234\0p1234", "1234\0abcdef");
 }

@@ -25,9 +25,6 @@ void		test_ft_strlen(void)
 {
 	printf("\n\n\e[1;1m~~~~~~  FT_STRLEN  ~~~~~~\e[0m\n\n");
 	test("Hello World");
-	test("\ttesting ft_strlen");
 	test("");
 	test("a very very very very very very very very very very long string");
-	test("abcdef\0---34567");
-	test("   ");
 }
