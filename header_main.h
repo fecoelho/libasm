@@ -1,24 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   header_main.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fcoelho <fcoelho@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/29 22:35:32 by fcoelho           #+#    #+#             */
-/*   Updated: 2020/11/29 22:35:34 by fcoelho          ###   ########.fr       */
+/*   Created: 2020/11/29 22:35:44 by fcoelho           #+#    #+#             */
+/*   Updated: 2020/11/29 22:35:45 by fcoelho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "header_main.h"
+#ifndef HEADER_MAIN_H
+# define HEADER_MAIN_H
 
-int		main(void)
-{
-	test_ft_strlen();
-	test_ft_strcpy();
-	test_ft_strcmp();
-	test_ft_write();
-	test_ft_read();
-	test_ft_strdup();
-	return (0);
-}
+# include <stdio.h>
+# include <string.h>
+# include <unistd.h>
+# include <errno.h>
+# include <fcntl.h>
+
+void	test_ft_strlen(void);
+void	test_ft_strcpy(void);
+void	test_ft_strcmp(void);
+void	test_ft_read(void);
+void	test_ft_write(void);
+void	test_ft_read(void);
+void	test_ft_strdup(void);
+
+#endif

@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   test_ft_strlen.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fcoelho <fcoelho@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -11,14 +11,23 @@
 /* ************************************************************************** */
 
 #include "header_main.h"
+#include "libasm.h"
 
-int		main(void)
+static void	test(char *str)
 {
-	test_ft_strlen();
-	test_ft_strcpy();
-	test_ft_strcmp();
-	test_ft_write();
-	test_ft_read();
-	test_ft_strdup();
-	return (0);
+	printf("string    = \"%s\"\n\n", str);
+	printf("strlen    = %lu\n", strlen(str));
+	printf("ft_strlen = %lu\n", ft_strlen(str));
+	printf("----------------------------\n");
+}
+
+void		test_ft_strlen(void)
+{
+	printf("\n\n\e[1;1m~~~~~~  FT_STRLEN  ~~~~~~\e[0m\n\n");
+	test("Hello World");
+	test("\ttesting ft_strlen");
+	test("");
+	test("a very very very very very very very very very very long string");
+	test("abcdef\0---34567");
+	test("   ");
 }

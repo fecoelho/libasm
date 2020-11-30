@@ -10,48 +10,62 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME	=	libasm.a
+NAME		=	libasm.a
 
-CC		=	nasm
+SRC_DIR		=	./src
+SRC			=	$(SRC_DIR)/ft_strlen.s \
+				$(SRC_DIR)/ft_strcpy.s \
+				$(SRC_DIR)/ft_strcmp.s \
+				$(SRC_DIR)/ft_write.s \
+				$(SRC_DIR)/ft_read.s \
+				$(SRC_DIR)/ft_strdup.s \
 
-FLAGS	=	-f elf64
+OBJ_DIR		=	./obj
+OBJ			=	$(patsubst $(SRC_DIR)/%.s, $(OBJ_DIR)/%.o, $(SRC))
 
-SRCS	=	ft_strlen.s		\
-			ft_strcpy.s		\
-			ft_strcmp.s		\
-			ft_write.s		\
-			ft_read.s		\
-			ft_strdup.s
+TESTS_DIR	=	./main_tests
+SRC_TESTS	=	$(TESTS_DIR)/test_ft_strlen.c \
+				$(TESTS_DIR)/test_ft_strcpy.c \
+				$(TESTS_DIR)/test_ft_strcmp.c \
+				$(TESTS_DIR)/test_ft_write.c \
+				$(TESTS_DIR)/test_ft_read.c \
+				$(TESTS_DIR)/test_ft_strdup.c
 
-OBJS	=	$(patsubst %.s, %.o, ${SRCS})
+INCLUDE		=	./include
 
-all		:	$(NAME)
+ASM			=	nasm
 
-$(NAME)	:	$(OBJS)
-			@echo "\033[0mUpdating library..."
-			ar rc $(NAME) $(OBJS)
-			ranlib $(NAME)
-			@echo "\033[0m"
+ASM_FLAG	=	-f elf64
 
-%.o: %.s
-			@echo "\033[0mGenerating Lib..."
-			$(CC) $(FLAGS) -o $@ $<
-			@echo "\033[0m"
+CC			=	clang
 
-clean	:	
-			@echo "\033[0mCleaning objects..."
-			rm -f $(OBJS)
-			rm -f ./tester
-			@echo "\033[0m"
+CC_FLAGS	=	-Wall -Werror -Wextra -g \
+				-L. -lasm
 
-fclean	:	clean
-			@echo "\033[0mCleaning objects and library..."
-			rm -f $(NAME)
-			@echo "\033[0m"
+HEADER		=	-I $(INCLUDE) \
+				-I.
 
-re		:	fclean all
+RM 			=	/bin/rm -f
 
-test	:	all main.c
-			clang -g -no-pie -Werror -Wextra -Wall main.c -L./ -lasm -I ./libasm.h -o tester
+all: $(NAME)
 
-.PHONY	:	all re clean fclean test
+$(NAME): $(OBJ)
+	ar rcs $(NAME) $(OBJ)
+
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.s
+	mkdir -p $(OBJ_DIR)
+	$(ASM) $(ASM_FLAG) $< -o $@
+
+test: $(NAME) $(SRC_TESTS) main.c
+	$(CC) main.c $(SRC_TESTS) $(HEADER) $(CC_FLAGS) -o $@
+
+clean:
+	$(RM) $(OBJ)
+	$(RM) -r $(OBJ_DIR)
+
+fclean: clean
+	$(RM) $(NAME) test testbonus
+
+re: fclean all
+
+.PONY: all, test, clean, fclean, re
