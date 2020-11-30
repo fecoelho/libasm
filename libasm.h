@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   libasm.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fcoelho </var/mail/fcoelho>                +#+  +:+       +#+        */
+/*   By: fcoelho <fcoelho@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/29 22:35:44 by fcoelho           #+#    #+#             */
 /*   Updated: 2020/11/29 22:35:45 by fcoelho          ###   ########.fr       */

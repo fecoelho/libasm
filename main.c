@@ -14,8 +14,8 @@
 
 int			ft_strlen_t(char *str)
 {
-	int 	ret1;
-	int 	ret2;
+	int		ret1;
+	int		ret2;
 
 	ret1 = ft_strlen(str);
 	ret2 = strlen(str);
@@ -59,11 +59,6 @@ int			ft_strcmp_t(char *s1, char *s2)
 	return (1);
 }
 
-/*
-** F_SETFL - Set the file descriptor flags to the value specified by arg.
-** O_NONBLOCK - if specified, open will return immediately without a carrier. 
-** pipe - This creates both the reading and writing ends of the pipe. 
-*/
 int			ft_write_t(char *str)
 {
 	int			pipeline[2];
@@ -78,11 +73,7 @@ int			ft_write_t(char *str)
 	ret = read(pipeline[0], buf, BUFFER_SIZE);
 	buf[ret] = '\0';
 	errno = 0;
-	//printf("%d\n", errno);
 	printf("write : \"%s\" / ft_write : \"%s\"\n", str, buf);
-	//ft_write(42, "Error tester\n", 13);
-	//printf("%d\n", errno);
-	//printf("write_len : \"%zi\" / ft_write_len : \"%zi\"\n", write(1, str, strlen(str)), ft_write(1, buf, strlen(buf)));
 	if (!strcmp(buf, str))
 		printf("" PASS "[OK]\n" RESET "");
 	else
@@ -104,7 +95,6 @@ int			ft_read_t(char *str)
 	fcntl(pipeline[0], F_SETFL, O_NONBLOCK);
 	write(pipeline[1], str, strlen(str));
 	ret = ft_read(pipeline[0], buf, BUFFER_SIZE);
-	//ret = ft_read(STDIN_FILENO, buf, BUFFER_SIZE);
 	buf[ret] = '\0';
 	printf("str : \"%s\" / What was read : \"%s\"\n", str, buf);
 	if (!strcmp(buf, str))
@@ -135,9 +125,6 @@ int			ft_strdup_t(char *str)
 
 int			main(void)
 {
-	/*
-	**	ft_strlen
-	*/
 	printf("%s", "ft_strlen.s\n");
 	ft_strlen_t("Hellow World!");
 	ft_strlen_t("168416432");
@@ -147,10 +134,6 @@ int			main(void)
 	ft_strlen_t("");
 	ft_strlen_t("esta frase eh bem grande, tem 112 letras e com muitos aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaas");
 	printf("\n\n");
-
-	/*
-	** ft_strcpy
-	*/
 	printf("%s", "ft_strcpy.s\n");
 	ft_strcpy_t("Hellow World!");
 	ft_strcpy_t("\t@caps");
@@ -158,10 +141,6 @@ int			main(void)
 	ft_strcpy_t(" ");
 	ft_strcpy_t("Hellow\0 World!");
 	printf("\n\n");
-
-	/*
-	** ft_strcmp
-	*/
 	printf("%s", "ft_strcmp.s\n");
 	ft_strcmp_t("Hellow World!", "Hellow World!");
 	ft_strcmp_t("Hellow", "World!");
@@ -173,10 +152,6 @@ int			main(void)
 	ft_strcmp_t("uvaf", "uva");
 	ft_strcmp_t("Hellow\0 World!", " crazy");
 	printf("\n\n");
-
-	/*
-	** ft_write
-	*/
 	printf("%s", "ft_write.s\n");
 	ft_write_t("Hellow World!");
 	ft_write_t("42");
@@ -185,10 +160,6 @@ int			main(void)
 	ft_write_t("Hellow \tworld!");
 	ft_write_t("Hellow\0World");
 	printf("\n\n");
-
-	/*
-	** ft_read
-	*/
 	printf("%s", "ft_read.s\n");
 	ft_read_t("Hellow World!");
 	ft_read_t("42");
@@ -197,10 +168,6 @@ int			main(void)
 	ft_read_t("Hellow \tworld!");
 	ft_read_t("Hellow\0World");
 	printf("\n\n");
-
-	/*
-	** ft_strdup
-	*/
 	printf("%s", "ft_strdup.s\n");
 	ft_strdup_t("Hellow World!");
 	ft_strdup_t("42");
