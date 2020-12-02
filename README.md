@@ -10,3 +10,7 @@ Basta executar o comando `make` na pasta em que clonou.
 > make test
 > ./test
 ```
+
+---
+![lalala](https://img.shields.io/badge/Made%20with-Assembly-red)
+![Lines of code](https://img.shields.io/tokei/lines/github/fecoelho/libasm?color=red)
